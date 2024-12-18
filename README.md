@@ -69,6 +69,85 @@ $ go mod tidy
 Next: define a resource with:
 $ operator-sdk create api
 ```
+
+This is how it looks like:
+
+```
+ubuntu@vm1:~/ipsec-route-operator$ tree
+.
+├── Dockerfile
+├── Makefile
+├── PROJECT
+├── README.md
+├── api
+│   └── v1
+│       ├── groupversion_info.go
+│       ├── ipsecroute_types.go
+│       └── zz_generated.deepcopy.go
+├── bin
+│   ├── controller-gen -> /home/ubuntu/ipsec-route-operator/bin/controller-gen-v0.15.0
+│   └── controller-gen-v0.15.0
+├── cmd
+│   └── main.go
+├── config
+│   ├── crd
+│   │   ├── bases
+│   │   │   └── ipsecroutes.yaml
+│   │   ├── kustomization.yaml
+│   │   └── kustomizeconfig.yaml
+│   ├── default
+│   │   ├── kustomization.yaml
+│   │   ├── manager_metrics_patch.yaml
+│   │   └── metrics_service.yaml
+│   ├── manager
+│   │   ├── kustomization.yaml
+│   │   └── manager.yaml
+│   ├── manifests
+│   │   └── kustomization.yaml
+│   ├── prometheus
+│   │   ├── kustomization.yaml
+│   │   └── monitor.yaml
+│   ├── rbac
+│   │   ├── ipsecroute_editor_role.yaml
+│   │   ├── ipsecroute_viewer_role.yaml
+│   │   ├── kustomization.yaml
+│   │   ├── leader_election_role.yaml
+│   │   ├── leader_election_role_binding.yaml
+│   │   ├── metrics_auth_role.yaml
+│   │   ├── metrics_auth_role_binding.yaml
+│   │   ├── metrics_reader_role.yaml
+│   │   ├── role.yaml
+│   │   ├── role_binding.yaml
+│   │   └── service_account.yaml
+│   ├── samples
+│   │   ├── app_v1_ipsecroute.yaml
+│   │   └── kustomization.yaml
+│   └── scorecard
+│       ├── bases
+│       │   └── config.yaml
+│       ├── kustomization.yaml
+│       └── patches
+│           ├── basic.config.yaml
+│           └── olm.config.yaml
+├── go.mod
+├── go.sum
+├── hack
+│   └── boilerplate.go.txt
+├── internal
+│   └── controller
+│       ├── ipsecroute_controller.go
+│       ├── ipsecroute_controller_test.go
+│       └── suite_test.go
+└── test
+    ├── e2e
+    │   ├── e2e_suite_test.go
+    │   └── e2e_test.go
+    └── utils
+        └── utils.go
+
+22 directories, 47 files
+ubuntu@vm1:~/ipsec-route-operator$ 
+```
 # Create a Custom Resource Definition (CRD)
 
 Generate the API and CRD for a custom resource.
